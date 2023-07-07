@@ -33,7 +33,7 @@
 						<li><span><a href="{{ url('/') }}">Home</a></span>
 							
 						</li>
-						<li><span><a href="{{ url('layanan') }}">Layanan</a></span>
+						
 						
 						</li>
 						<li><span><a href="#0">Info Wisata</a></span>

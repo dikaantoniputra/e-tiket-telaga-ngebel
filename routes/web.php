@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BokingController;
 use App\Http\Controllers\EtiketController;
 use App\Http\Controllers\LayananController;
+use App\Http\Controllers\OrderanController;
 
 
 
@@ -35,6 +36,10 @@ Route::group(['prefix' => 'admin'], function () {
     Route::resource('user', UserControler::class);
 
     Route::resource('layanan', LayananController::class);
+
+    Route::resource('orderan', OrderanController::class);
+
+
 });
 
 Route::get('/', [EtiketController::class, 'index'])->name('index');
@@ -52,10 +57,11 @@ Route::put('/profile', [EtiketController::class, 'profileupdate'])->name('profil
 
 Route::get('/riwayat', [EtiketController::class, 'riwayat'])->name('riwayat');
 
+Route::get('/tiket', [EtiketController::class, 'tiket'])->name('tiket');
+
 // web.php
 Route::post('/booking', [BokingController::class, 'store'])->name('booking.store');
-
-
+Route::put('/bayar/{id}', [EtiketController::class, 'update'])->name('bayar.update');
 
 
 Route::get('/telaga-ngebel', function () {

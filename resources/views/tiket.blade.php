@@ -336,6 +336,22 @@
       color: #999;
     }
     
+
+    .invoice-title h2, .invoice-title h3 {
+        display: inline-block;
+    }
+    
+    .table > tbody > tr > .no-line {
+        border-top: none;
+    }
+    
+    .table > thead > tr > .no-line {
+        border-bottom: none;
+    }
+    
+    .table > tbody > tr > .thick-line {
+        border-top: 2px solid;
+    }
     
     
     
@@ -359,63 +375,134 @@
                 <!-- /container -->
               </div>
               <!-- /sub_header -->
-              
-              <main>
-                <div class="container margin_60_35">
-                  <div class="box_booking">
+              <div class="bg-white rounded shadow mb-5">
+                <!-- Rounded tabs -->
+                <ul id="myTab" role="tablist" class="nav nav-tabs nav-pills flex-column flex-sm-row text-center bg-light border-0 rounded-nav">
+                  
+                  
+                </ul>
+            
+                <div id="myTabContent" class="tab-content">
+            
+                  <div id="home" role="tabpanel" aria-labelledby="home-tab" class="tab-pane fade px-4 py-5 show active">
+                    <ul class="nav nav-tabs" id="orderTabs" role="tablist">
+                      @foreach ($orderan as $order)
+                      @if ($order->status == 1)
+                        <li class="nav-item">
+                          <a class="nav-link @if ($loop->first) active @endif" id="orderTab{{ $order->id }}" data-toggle="tab" href="#order{{ $order->id }}" role="tab" aria-controls="order{{ $order->id }}" aria-selected="true">
+                            Orderan Tiket 
+                          </a>
+                        </li>
+                        @endif
+                      @endforeach
+                    </ul>
+                    
+                    <div class="tab-content" id="orderTabsContent">
+                      @foreach ($orderan as $order)
+                      @if ($order->status == 1)
+                        <div class="tab-pane fade @if ($loop->first) show active @endif" id="order{{ $order->id }}" role="tabpanel" aria-labelledby="orderTab{{ $order->id }}">
+                          <div class="border p-3 mb-5">
+                            <h3 class="h6 mb-0">
+                              <a class="d-block" data-toggle="collapse" href="#collapsepaypal{{ $order->id }}" role="button" aria-expanded="false" aria-controls="collapsepaypal{{ $order->id }}">
+                                Orderan - @if ($order->status == '1')
+                                Sukses
+                           
+                                @endif
+                              </a>
+                            </h3>
 
-                    @foreach ($orderan as $item)
-                    <div class="strip_booking">
-                      <div class="row">
-                        <div class="col-lg-2 col-md-2">
-                          <div class="date">
-                            <span class="month">{{ \Carbon\Carbon::parse($item->tgl_booking)->format('M') }}</span>
-                            <span class="day"><strong>{{ \Carbon\Carbon::parse($item->tgl_booking)->format('d') }}</strong>{{ \Carbon\Carbon::parse($item->tgl_booking)->format('D') }}</span>
-                        </div>
-                        
-                        </div>
-                        <div class="col-lg-6 col-md-5">
-                          <h3 class="hotel_booking">{{ $item->boking->layanan->nama_layanan }}<span>Tiket : {{ $item->boking->jumlah }} / Total :{{ $item->jumlah }}</span></h3>
-                          <h3> Request: {{ $item->boking->deskripsi ?? '' }}</h3>
-                        </div>
-                        <div class="col-lg-2 col-md-3">
-                          <ul class="info_booking">
-                            <li><strong>Booking Status</strong>@if ($item->status == 0)
-                              Belum Bayar
-                          @elseif ($item->status == 1)
-                              Sukses
-                          @elseif ($item->status == 2)
-                          Pending
-
-                          @endif</li>
-                            <li><strong>Booked on</strong> {{ $item->boking->tgl_boking }}</li>
-                          </ul>
-                        </div>
-                        <div class="col-lg-2 col-md-2">
-                          <div class="booking_buttons">
-                            <a href="#0" class="btn_2" id="uploadBtn">Upload</a>
-                            <a href="#0" class="btn_3">Cancel</a>
+                            <div class="collapse" id="collapsepaypal{{ $order->id }}">
+                              <div class="py-2">
+                                {{-- konten --}}
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="invoice-title add_top_30">
+                                                <h2>Invoice: kode unik</h2><h6 class="float-right">Tgl Pembilan: {{ $order->created_at }}</h6>
+                                            </div>
+                                            <hr>
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <address>
+                                                    <strong>Billed To:</strong><br>
+                                                        {{ $user->profile->name }}<br>
+                                                        {{ $user->profile->phone }}<br>
+                                                        {{ $user->email }}<br>
+                                                        {{ $user->profile->city }}
+                                                     
+                                                    </address>
+                                                </div>
+                                               
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <address>
+                                                        <strong>Payment Method:</strong><br>
+                                                       {{ $order->nama_bank ?? '' }}<br>
+                                                        {{ $order->name_transfer ?? ''}}
+                                                    </address>
+                                                </div>
+                                                <div class="col-6 text-right">
+                                                    <address>
+                                                        <strong>Tiket Berlaku:</strong><br>
+                                                        {{ $order->boking->tgl_boking }}<br><br>
+                                                    </address>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="add_top_15">
+                                                <h3><strong>Order Tiket</strong></h3>
+                                                    <div class="table-responsive">
+                                                        <table class="table table-condensed">
+                                                            <thead>
+                                                                <tr>
+                                                                    <td><strong>Wisata</strong></td>
+                                                                    <td class="text-center"><strong>Price</strong></td>
+                                                                    <td class="text-center"><strong>Jumlah</strong></td>
+                                                                    <td class="text-right"><strong>Totals</strong></td>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>{{ $order->boking->layanan->nama_layanan }}</td>
+                                                                    <td class="text-center">{{ $order->boking->layanan->harga }}</td>
+                                                                    <td class="text-center">{{ $order->boking->jumlah }}</td>
+                                                                    <td class="text-right">{{ $order->jumlah }}</td>
+                                                                </tr>
+                                                               
+                                                               
+                                                                <tr>
+                                                                    <td class="no-line"></td>
+                                                                    <td class="no-line"></td>
+                                                                    <td class="no-line text-center"><strong>Total</strong></td>
+                                                                    <td class="no-line text-right">{{ $order->jumlah }}</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                
+                              </div>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                      <!-- /row -->
-
-                      
+                        @endif
+                      @endforeach
                     </div>
-                    @endforeach
                     
-                
-                  
-                    
-    
+            
                   </div>
-
-                  
-                  <!-- /box_booking -->
-                  <p class="text-right"><a href="checkout.html" class="btn_1">Checkout</a></p>
+            
                 </div>
-                <!-- /container -->
-              </main>
+                <!-- End rounded tabs -->
+              </div>
             </div>
         </div>
     </div>
@@ -437,9 +524,7 @@
             </ul>
             <div class="tab-content checkout">
               <div class="tab-pane fade show active" id="tab_1" role="tabpanel" aria-labelledby="tab_1">
-                <form action="{{ route('bayar.update', ['id' => $item->id]) }}" method="POST" enctype="multipart/form-data">
-                  @csrf
-                  @method('PUT')
+               
                 <div class="form-group">
                   <input type="text" class="form-control" placeholder="name_transfer" name="name_transfer">
                 </div>
@@ -472,13 +557,13 @@
           </div>
           <div class="col-lg-4 col-md-6">
             <div class="step middle">
-              <h3>2. Pembayaran @if ($item->status == 0)
+              {{-- <h3>2. Pembayaran @if ($orderan->status == 0)
                 Belum Bayar
-            @elseif ($item->status == 1)
+            @elseif ($orderan->status == 1)
                 Sukses
-            @elseif ($item->status == 2)
+            @elseif ($orderan->status == 2)
                 Pending
-            @endif
+            @endif --}}
           </h3>
               
               
@@ -497,12 +582,12 @@
             <div class="box_general summary">
               <ul>
                 <li>Where <span class="float-right">{{ $user->profile->name }}</span></li>
-                <li>Date <span class="float-right"> {{ $item->boking->tgl_boking }}</span></li>
-                <li>Harga <span class="float-right">{{ $item->boking->layanan->harga }}</span></li>
-                <li>Jumlah Tiket <span class="float-right">{{ $item->boking->jumlah }}</span></li>
-                <li>TOTAL COST <span class="float-right">Rp.{{ $item->jumlah }}</span></li>
+                {{-- <li>Date <span class="float-right"> {{ $orderan->boking->tgl_boking }}</span></li>
+                <li>Harga <span class="float-right">{{ $orderan->boking->layanan->harga }}</span></li>
+                <li>Jumlah Tiket <span class="float-right">{{ $orderan->boking->jumlah }}</span></li>
+                <li>TOTAL COST <span class="float-right">Rp.{{ $orderan->jumlah }}</span></li> --}}
               </ul>
-              <textarea class="form-control add_bottom_15"  style="height: 100px;">{{ $item->boking->deskripsi }}</textarea>
+              {{-- <textarea class="form-control add_bottom_15"  style="height: 100px;">{{ $orderan->boking->deskripsi }}</textarea> --}}
  
               
               <button type="submit" class="btn_1 full-width cart">CONFIRM AND PAY</button>
@@ -561,5 +646,7 @@ window.addEventListener('click', function(event) {
 </script>
 
 @endpush
+
+
 
 

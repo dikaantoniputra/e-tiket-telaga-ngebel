@@ -64,5 +64,43 @@ class EtiketController extends Controller
         return view('riwayat', compact('orderan','user'));
     }
 
+    public function update(Request $request, $id)
+{
+    $validatedData = $request->validate([
+        'name_transfer' => 'required',
+        'nama_bank' => 'required',
+        'gambar' => 'image|mimes:jpeg,png,jpg,gif|max:2048', 
+    ]);
+    
+    $company = Orderan::find($id);
+    if (!$company) {
+        return redirect()->route('layanan.index')->with('error', 'Data perusahaan tidak ditemukan.');
+    }
+
+    $company->name_transfer = $request->name_transfer;
+    $company->nama_bank = $request->nama_bank;
+    $company->status = 2; // Update status menjadi 2
+
+
+    if ($request->hasFile('gambar')) {
+        $file = $request->file('gambar');
+        $path = $request->file('gambar')->store('public/gambar');
+        $company->gambar = 'storage/' . substr($path, 7);
+    }
+
+    $company->save();
+
+    return redirect()->route('layanan.index')->with('success', 'Data perusahaan berhasil diperbarui.');
+}
+
+
+public function tiket()
+{
+    $user = Auth::user();
+    $orderan = Orderan::where('user_id', $user->id)->get();
+    return view('tiket', compact('orderan','user'));
+}
+
+
     
 }

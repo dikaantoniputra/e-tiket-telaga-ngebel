@@ -3,7 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Models\Orderan;
+use App\Models\DetailUser;
 use Illuminate\Http\Request;
+use Yajra\Datatables\Datatables;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use Illuminate\Foundation\Auth\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
+
 
 class OrderanController extends Controller
 {
@@ -12,9 +20,37 @@ class OrderanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+    
+        if ($request->ajax()) {
+            $model = 'orderan';
+            // return Datatables::of(User::select(['*']))
+            return Datatables::of(Orderan::with('user','profile'))
+            
+        // ->addIndexColumn()
+                     ->addColumn('action', function ($object) use ($model) {
+                        $text = "";
+                        $text.= '<a href="'.route($model.'.edit', [$model => $object]).'" class="btn btn-sm btn-success"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-edit" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                         <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1"></path>
+                         <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z"></path>
+                         <path d="M16 5l3 3"></path>
+                         </svg> Edit</a>';
+                         $text.= ' <a href="'.route($model.'.destroy', [$model => $object]).'" class="btn btn-sm btn-danger btn-delete"><i class="fas fa-trash"></i> Hapus</a>';
+                         return $text;
+                          })   
+
+                        
+
+                    ->addIndexColumn()
+                    ->rawColumns(['action'])
+                    ->make(true);
+
+        }
+       
+       return view('admin.page.orderan.view');
+
     }
 
     /**
@@ -55,10 +91,17 @@ class OrderanController extends Controller
      * @param  \App\Models\Orderan  $orderan
      * @return \Illuminate\Http\Response
      */
-    public function edit(Orderan $orderan)
+    public function edit($id)
     {
-        //
+        $orderan = Orderan::findOrFail($id); // Find the order with the given ID
+        $user = User::find($orderan->user_id); // Find the user associated with the order
+    
+        // Retrieve additional user details
+        $detailUser = DetailUser::where('user_id', $user->id)->first();
+    
+        return view('admin.page.orderan.edit', compact('orderan', 'user', 'detailUser'));
     }
+    
 
     /**
      * Update the specified resource in storage.
@@ -67,9 +110,19 @@ class OrderanController extends Controller
      * @param  \App\Models\Orderan  $orderan
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Orderan $orderan)
+    public function update(Request $request, $id)
     {
-        //
+
+        $company = Orderan::find($id);
+        if (!$company) {
+            return redirect()->route('orderan.index')->with('error', 'Data perusahaan tidak ditemukan.');
+        }
+
+        $company->status = 1; // Update status menjadi 2
+
+        $company->save();
+
+        return redirect()->route('orderan.index')->with('success', 'Data perusahaan berhasil diperbarui.');
     }
 
     /**

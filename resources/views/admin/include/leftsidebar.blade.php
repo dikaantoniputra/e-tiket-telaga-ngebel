@@ -84,7 +84,7 @@
 
 
                  <li>
-                    <a href="{{ url('/') }}">
+                    <a href="{{ url('/admin/orderan') }}">
                         <i class="mdi mdi-forum-outline"></i>
                         <span> Orderan </span>
                     </a>

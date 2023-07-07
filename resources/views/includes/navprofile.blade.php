@@ -10,7 +10,7 @@
                 </a>
             </li>
             <li>
-                <a href="{{ url('foto') }}">
+                <a href="{{ url('tiket') }}">
                     <i class='bx bx-user'></i>
                     Tiket Pesanan
                 </a>

@@ -15,4 +15,14 @@ class Orderan extends Model
         return $this->hasOne(Boking::class);
     }
 
+    public function user()
+    {
+        return $this->BelongsTo(User::class);
+    }
+
+    public function profile()
+    {
+        return $this->BelongsTo(DetailUser::class);
+    }
+
 }
