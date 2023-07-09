@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Layanan;
+use App\Models\Orderan;
+use App\Models\Rekening;
+use App\Models\DetailUser;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
-use App\Models\DetailUser;
-use App\Models\User;
-use App\Models\Orderan;
 
 
 
@@ -59,6 +60,7 @@ class EtiketController extends Controller
 
     public function riwayat()
     {
+       
         $user = Auth::user();
         $orderan = Orderan::where('user_id', $user->id)->get();
         return view('riwayat', compact('orderan','user'));

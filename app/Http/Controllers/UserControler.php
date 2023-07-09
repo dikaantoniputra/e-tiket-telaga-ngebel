@@ -105,7 +105,7 @@ class UserControler extends Controller
         $detail->user_id = $user->id; // Menyimpan ID user ke dalam field user_id pada DetailUser
         $detail->save();
     
-        return redirect()->route('daftar')->with('success', 'Data perusahaan berhasil disimpan.');
+        return redirect()->route('daftar')->with('success', 'Data Wisawan berhasil Terdaftar.');
     } 
     
 

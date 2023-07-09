@@ -80,7 +80,7 @@
                 </li>
 
                 <li>
-                    <a href="{{ url('admin/kegiatan') }}">
+                    <a href="{{ url('admin/informasi') }}">
                         <i class="mdi mdi-forum-outline"></i>
                         <span>Data Informasi </span>
                     </a>

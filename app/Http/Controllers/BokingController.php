@@ -43,7 +43,7 @@ class BokingController extends Controller
         if (Auth::check()) {
             $user_id = Auth::id();
     
-            // Ambil inputan total dari permintaan POST
+            // Ambil inputan total dari permintaan Simpan
             $booking_id = $request->input('booking_id');
             $tgl_boking = $request->input('tgl_boking');
             $harga = $request->input('harga');
@@ -53,7 +53,7 @@ class BokingController extends Controller
 
             $total = $harga * $jumlah;
 
-            $slug = Str::random(10) . date('Ymd');
+            $slug = Str::random(5) . date('Ymd');
     
             // Membuat pesanan ('order') dan menyimpannya ke dalam database
             $order = Orderan::create([

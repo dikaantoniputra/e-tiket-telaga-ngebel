@@ -22,6 +22,7 @@ class CreateInformasisTable extends Migration
             $table->string('jam_tutup')->nullable();
             $table->string('hari_buka')->nullable();
             $table->string('hari_tutup')->nullable();
+            $table->string('harga')->nullable();
             $table->string('gambar')->nullable();
             $table->timestamps();
         });

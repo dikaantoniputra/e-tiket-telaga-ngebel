@@ -473,10 +473,12 @@
                                     
                                     
                                     <div class="payment_info d-none d-sm-block">
-                                      <figure><img src="img/cards_all.svg" alt=""></figure>
-                                      <p>NO Rek : 12313123-1231</p>
-                                      <figure><img src="img/paypal.svg" alt=""></figure>
-                                      <p>No rek : 312839123123</p>
+{{-- 
+                                      @foreach ($rekening as $item)
+                                        <figure><img src="img/cards_all.svg" alt=""></figure>
+                                        <p>{{ $item->norek }}</p>
+                                      @endforeach --}}
+                                     
                                     </div>
                                   </div>
                                   <!-- /step -->
@@ -486,11 +488,11 @@
                                     <h3>3. Order Summary</h3>
                                   <div class="box_general summary">
                                     <ul>
-                                      <li>Where <span class="float-right">{{ $user->profile->name }}</span></li>
-                                      <li>Date <span class="float-right"> {{ $item->boking->tgl_boking }}</span></li>
-                                      <li>Harga <span class="float-right">{{ $item->boking->layanan->harga }}</span></li>
-                                      <li>Jumlah Tiket <span class="float-right">{{ $item->boking->jumlah }}</span></li>
-                                      <li>TOTAL COST <span class="float-right">Rp.{{ $item->jumlah }}</span></li>
+                                      <li>Where <span class="float-right">{{ $user->profile->name ?? ''}}</span></li>
+                                      <li>Date <span class="float-right"> {{ $item->boking->tgl_boking ?? '' }}</span></li>
+                                      <li>Harga <span class="float-right">{{ $item->boking->layanan->harga ?? '' }}</span></li>
+                                      <li>Jumlah Tiket <span class="float-right">{{ $item->boking->jumlah ?? '' }}</span></li>
+                                      <li>TOTAL COST <span class="float-right">Rp.{{ $item->jumlah ?? '' }}</span></li>
                                     </ul>
                                     <textarea class="form-control add_bottom_15"  style="height: 100px;">{{ $item->boking->deskripsi }}</textarea>
                        
@@ -540,18 +542,20 @@
 @push('after-script')
 
 <script>
-  const uploadBtn_{{ $item->id }} = document.getElementById('uploadBtn_{{ $item->id }}');
-  const uploadModal_{{ $item->id }} = document.getElementById('uploadModal_{{ $item->id }}');
-  const closeBtn_{{ $item->id }} = uploadModal_{{ $item->id }}.querySelector('.close');
+  @if (!empty($item))
+    const uploadBtn_{{ $item->id }} = document.getElementById('uploadBtn_{{ $item->id }}');
+    const uploadModal_{{ $item->id }} = document.getElementById('uploadModal_{{ $item->id }}');
+    const closeBtn_{{ $item->id }} = uploadModal_{{ $item->id }}.querySelector('.close');
 
-  uploadBtn_{{ $item->id }}.addEventListener('click', function (e) {
-    e.preventDefault();
-    uploadModal_{{ $item->id }}.style.display = 'block';
-  });
+    uploadBtn_{{ $item->id }}.addEventListener('click', function (e) {
+      e.preventDefault();
+      uploadModal_{{ $item->id }}.style.display = 'block';
+    });
 
-  closeBtn_{{ $item->id }}.addEventListener('click', function () {
-    uploadModal_{{ $item->id }}.style.display = 'none';
-  });
+    closeBtn_{{ $item->id }}.addEventListener('click', function () {
+      uploadModal_{{ $item->id }}.style.display = 'none';
+    });
+  @endif
 </script>
 
 <script>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Informasi;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserControler;
 use App\Http\Controllers\AuthController;
@@ -8,6 +9,7 @@ use App\Http\Controllers\EtiketController;
 use App\Http\Controllers\LayananController;
 use App\Http\Controllers\OrderanController;
 use App\Http\Controllers\RekeningController;
+use App\Http\Controllers\InformasiController;
 
 
 
@@ -42,6 +44,8 @@ Route::group(['prefix' => 'admin'], function () {
 
     Route::resource('rekening', RekeningController::class);
 
+    Route::resource('informasi', InformasiController::class);
+
 
 });
 
@@ -68,13 +72,14 @@ Route::put('/bayar/{id}', [EtiketController::class, 'update'])->name('bayar.upda
 
 
 Route::get('/telaga-ngebel', function () {
-    return view('info');
+    $informasi = Informasi::orderBy('created_at', 'asc')->first();
+    return view('info', compact('informasi'));
 })->name('info');
 
 Route::get('/mloko-sewu', function () {
-    return view('info2');
+    $informasi = Informasi::orderBy('id', 'desc')->first();
+    return view('info2', compact('informasi'));
 })->name('info2');
-
 
 Route::get('/about', function () {
     return view('faqs');

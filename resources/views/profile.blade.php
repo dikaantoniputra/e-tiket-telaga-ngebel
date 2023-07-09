@@ -358,7 +358,7 @@
                       <div class="row justify-content-center">
                           <div class="col-xl-12 col-lg-12 col-md-12">
                               <div class="box_account">
-                                  <h3 class="new_client">New Client</h3>
+                                  <h3 class="new_client">Profile Saya</h3>
                                   <small class="float-right pt-2">* Required Fields</small>
                                   <div class="form_container">
                                     <form class="job-post-from" method="POST" action="{{ route('profile.update') }}">
@@ -412,7 +412,7 @@
                                               <!-- /row -->
                                           </div>
                                           <div class="text-center">
-                                              <button type="submit" class="btn_1 full-width">Register</button>
+                                              <button type="submit" class="btn_1 full-width">Update Profile</button>
                                           </div>
                                       </form>
                                   </div>

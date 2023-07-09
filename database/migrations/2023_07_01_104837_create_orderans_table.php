@@ -16,7 +16,7 @@ class CreateOrderansTable extends Migration
         Schema::create('orderans', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->string(' ')->unique();
+            $table->string('slug')->unique();
             $table->integer('jumlah');
             $table->string('name_transfer')->nullable();
             $table->string('nama_bank')->nullable();
