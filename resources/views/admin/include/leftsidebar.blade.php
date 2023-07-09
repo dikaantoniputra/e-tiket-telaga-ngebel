@@ -73,6 +73,13 @@
                 </li>
 
                 <li>
+                    <a href="{{ url('admin/rekening') }}">
+                        <i class="mdi mdi-forum-outline"></i>
+                        <span>Data Rekening </span>
+                    </a>
+                </li>
+
+                <li>
                     <a href="{{ url('admin/kegiatan') }}">
                         <i class="mdi mdi-forum-outline"></i>
                         <span>Data Informasi </span>

@@ -418,7 +418,7 @@
                                     <div class="row">
                                         <div class="col-12">
                                             <div class="invoice-title add_top_30">
-                                                <h2>Invoice: kode unik</h2><h6 class="float-right">Tgl Pembilan: {{ $order->created_at }}</h6>
+                                                <h6>Invoice: {{ $order->slug }}</h6><h6 class="float-right">Tgl Pembelian : {{ $order->created_at->format('d-m-Y') }}                                                </h6>
                                             </div>
                                             <hr>
                                             <div class="row">

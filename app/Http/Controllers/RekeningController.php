@@ -2,18 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Orderan;
-use App\Models\DetailUser;
+use App\Models\Rekening;
 use Illuminate\Http\Request;
+
+
 use Yajra\Datatables\Datatables;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
-
-class OrderanController extends Controller
+class RekeningController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -24,9 +25,9 @@ class OrderanController extends Controller
     {
     
         if ($request->ajax()) {
-            $model = 'orderan';
+            $model = 'rekening';
             // return Datatables::of(User::select(['*']))
-            return Datatables::of(Orderan::with('user','profile'))
+            return Datatables::of(Rekening::select('*'))
             
         // ->addIndexColumn()
                      ->addColumn('action', function ($object) use ($model) {
@@ -49,9 +50,10 @@ class OrderanController extends Controller
 
         }
        
-       return view('admin.page.orderan.view');
+       return view('admin.page.rekening.view');
 
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -60,7 +62,7 @@ class OrderanController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.page.rekening.create');
     }
 
     /**
@@ -71,16 +73,36 @@ class OrderanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'norek' => 'required',
+            'nama_bank' => 'required',
+            'gambar' => 'image|mimes:jpeg,png,jpg,gif|max:2048', 
+
+        ]);
+
+        $company = new Rekening;
+        $company->norek = $request->norek;
+        $company->nama_bank = $request->nama_bank;
+
+        if ($request->hasFile('gambar')) {
+            $file = $request->file('bukti_pembayaran');
+            $path = $request->file('gambar')->store('public/gambar');
+            $company->gambar = 'storage/' . substr($path, 7);
+        }
+
+        $company->save();
+
+        return redirect()->route('rekening.index')->with('success', 'Data perusahaan berhasil disimpan.');
     }
+
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Orderan  $orderan
+     * @param  \App\Models\Rekening  $rekening
      * @return \Illuminate\Http\Response
      */
-    public function show(Orderan $orderan)
+    public function show(Rekening $rekening)
     {
         //
     }
@@ -88,51 +110,66 @@ class OrderanController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Orderan  $orderan
+     * @param  \App\Models\Rekening  $rekening
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $orderan = Orderan::findOrFail($id); // Find the order with the given ID
-        $user = User::find($orderan->user_id); // Find the user associated with the order
-    
-        // Retrieve additional user details
-        $detailUser = DetailUser::where('user_id', $user->id)->first();
-    
-        return view('admin.page.orderan.edit', compact('orderan', 'user', 'detailUser'));
+        $rekening = Rekening::select('*')->findOrFail($id);
+        return view('admin.page.rekening.edit',compact('rekening'));
     }
-    
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Orderan  $orderan
+     * @param  \App\Models\Rekening  $rekening
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-
-        $company = Orderan::find($id);
-        if (!$company) {
-            return redirect()->route('orderan.index')->with('error', 'Data perusahaan tidak ditemukan.');
+        $validatedData = $request->validate([
+            'norek' => 'required',
+            'nama_bank' => 'required',
+            'gambar' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+    
+        $company = Rekening::findOrFail($id);
+        $company->norek = $request->norek;
+        $company->nama_bank = $request->nama_bank;
+    
+        if ($request->hasFile('gambar')) {
+            $file = $request->file('gambar');
+            $path = $request->file('gambar')->store('public/gambar');
+            $company->gambar = 'storage/' . substr($path, 7);
         }
-
-        $company->status = 1; 
-
+    
         $company->save();
-
-        return redirect()->route('orderan.index')->with('success', 'Data perusahaan berhasil diperbarui.');
+    
+        return redirect()->route('rekening.index')->with('success', 'Data perusahaan berhasil diperbarui.');
     }
+    
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Orderan  $orderan
+     * @param  \App\Models\Rekening  $rekening
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Orderan $orderan)
+    public function destroy($id)
     {
-        //
+        $company = Rekening::findOrFail($id);
+    
+        // Hapus file gambar jika ada
+        if (!empty($company->gambar)) {
+            // Hapus file dari sistem file
+            Storage::delete('public/' . substr($company->gambar, 8));
+        }
+    
+        // Hapus data perusahaan dari database
+        $company->delete();
+    
+        return redirect()->route('rekening.index')->with('success', 'Data perusahaan berhasil dihapus.');
     }
+    
 }

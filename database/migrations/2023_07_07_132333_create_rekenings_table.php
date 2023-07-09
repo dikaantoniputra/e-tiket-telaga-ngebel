@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateOrderansTable extends Migration
+class CreateRekeningsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,11 @@ class CreateOrderansTable extends Migration
      */
     public function up()
     {
-        Schema::create('orderans', function (Blueprint $table) {
+        Schema::create('rekenings', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->string(' ')->unique();
-            $table->integer('jumlah');
-            $table->string('name_transfer')->nullable();
+            $table->string('norek')->nullable();
             $table->string('nama_bank')->nullable();
             $table->string('gambar')->nullable();
-            $table->integer('status')->default('0');
             $table->timestamps();
         });
     }
@@ -33,6 +29,6 @@ class CreateOrderansTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('orderans');
+        Schema::dropIfExists('rekenings');
     }
 }

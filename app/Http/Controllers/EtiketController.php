@@ -90,7 +90,7 @@ class EtiketController extends Controller
 
     $company->save();
 
-    return redirect()->route('layanan.index')->with('success', 'Data perusahaan berhasil diperbarui.');
+    return redirect()->route('riwayat')->with('success', 'Data perusahaan berhasil diperbarui.');
 }
 
 

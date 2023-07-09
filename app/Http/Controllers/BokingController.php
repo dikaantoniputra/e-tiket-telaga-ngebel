@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Boking;
 use App\Models\Orderan;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 use Illuminate\Routing\Controller;
@@ -51,10 +52,13 @@ class BokingController extends Controller
             $metode = $request->input('metode_pembayaran_id');
 
             $total = $harga * $jumlah;
+
+            $slug = Str::random(10) . date('Ymd');
     
             // Membuat pesanan ('order') dan menyimpannya ke dalam database
             $order = Orderan::create([
                 'user_id' => $user_id,
+                'slug' => $slug,
                 'jumlah' => $total,
             ]);
 

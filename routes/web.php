@@ -7,6 +7,7 @@ use App\Http\Controllers\BokingController;
 use App\Http\Controllers\EtiketController;
 use App\Http\Controllers\LayananController;
 use App\Http\Controllers\OrderanController;
+use App\Http\Controllers\RekeningController;
 
 
 
@@ -39,6 +40,8 @@ Route::group(['prefix' => 'admin'], function () {
 
     Route::resource('orderan', OrderanController::class);
 
+    Route::resource('rekening', RekeningController::class);
+
 
 });
 
@@ -48,7 +51,7 @@ Route::get('detaillayanan/{slug}', [EtiketController::class, 'detail'])->name('d
 
 Route::get('/daftar', function () {
     return view('daftar');
-});
+})->name('daftar');
 
 Route::post('/daftar', [UserControler::class, 'store'])->name('daftar.store');
 

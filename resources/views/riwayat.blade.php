@@ -393,18 +393,131 @@
                         </div>
                         <div class="col-lg-2 col-md-2">
                           <div class="booking_buttons">
-                            <a href="#0" class="btn_2" id="uploadBtn">Upload</a>
+                            <a href="#0" class="btn_2" id="uploadBtn_{{ $item->id }}">Upload</a>
                             <a href="#0" class="btn_3">Cancel</a>
                           </div>
+                        </div>
+                      </div>
+
+                      <div id="uploadModal_{{ $item->id }}" class="modal pt-5 mt-3">
+                        <div class="modal-content">
+
+                            <div class="container">
+                              <div class="row">
+                                <div class="col-lg-4 col-md-6">
+                                  <div class="step first">
+                                    <h3>1. User info and billing address</h3>
+                                  <ul class="nav nav-tabs" id="tab_checkout" role="tablist">
+                                    <li class="nav-item">
+                                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#tab_1" role="tab" aria-controls="tab_1" aria-selected="true">Uplod</a>
+                                    </li>
+                                   
+                                  </ul>
+                                  <div class="tab-content checkout">
+                                     <div class="tab-pane fade show active" id="tab_1" role="tabpanel" aria-labelledby="tab_1">
+                                          <form action="{{ route('bayar.update', ['id' => $item->id]) }}" method="POST" enctype="multipart/form-data">
+                                            @csrf
+                                            @method('PUT')
+                                      <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="name_transfer" name="name_transfer">
+                                      </div>
+                                      <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="nama_bank" name="nama_bank">
+                                      </div>
+                                      <hr>
+                                     
+                                      <!-- /row -->
+                                      <div class="form-group">
+                                        <input type="file" class="form-control" placeholder="gambar" name="gambar">
+                                      </div>
+                                      <hr>
+                                      
+                                      <div id="other_addr_c" class="pt-2">
+                                      
+                              
+                                        <script>
+                                          // JavaScript code to handle modal
+                                          const uploadBtn = document.getElementById('uploadBtn_{{ $item->id }}');
+                                          const uploadModal = document.getElementById('uploadModal_{{ $item->id }}');
+                                          const closeBtn = uploadModal.querySelector('.close');
+                                      
+                                          uploadBtn.addEventListener('click', function (e) {
+                                            e.preventDefault();
+                                            uploadModal.style.display = 'block';
+                                          });
+                                      
+                                          closeBtn.addEventListener('click', function () {
+                                            uploadModal.style.display = 'none';
+                                          });
+                                        </script>
+                                      
+                                      </div>
+                                    
+                                      <hr>
+                                    </div>
+                             
+                                  </div>
+                                  </div>
+                                  <!-- /step -->
+                                </div>
+                                <div class="col-lg-4 col-md-6">
+                                  <div class="step middle">
+                                    <h3>2. Pembayaran @if ($item->status == 0)
+                                      Belum Bayar
+                                  @elseif ($item->status == 1)
+                                      Sukses
+                                  @elseif ($item->status == 2)
+                                      Pending
+                                  @endif
+                                </h3>
+                                    
+                                    
+                                    <div class="payment_info d-none d-sm-block">
+                                      <figure><img src="img/cards_all.svg" alt=""></figure>
+                                      <p>NO Rek : 12313123-1231</p>
+                                      <figure><img src="img/paypal.svg" alt=""></figure>
+                                      <p>No rek : 312839123123</p>
+                                    </div>
+                                  </div>
+                                  <!-- /step -->
+                                </div>
+                                <div class="col-lg-4 col-md-6">
+                                  <div class="step last">
+                                    <h3>3. Order Summary</h3>
+                                  <div class="box_general summary">
+                                    <ul>
+                                      <li>Where <span class="float-right">{{ $user->profile->name }}</span></li>
+                                      <li>Date <span class="float-right"> {{ $item->boking->tgl_boking }}</span></li>
+                                      <li>Harga <span class="float-right">{{ $item->boking->layanan->harga }}</span></li>
+                                      <li>Jumlah Tiket <span class="float-right">{{ $item->boking->jumlah }}</span></li>
+                                      <li>TOTAL COST <span class="float-right">Rp.{{ $item->jumlah }}</span></li>
+                                    </ul>
+                                    <textarea class="form-control add_bottom_15"  style="height: 100px;">{{ $item->boking->deskripsi }}</textarea>
+                       
+                                    
+                                    <button type="submit" class="btn_1 full-width cart">CONFIRM AND PAY</button>
+                      
+                                  </form>
+                                  </div>
+                                  <!-- /box_general -->
+                                  </div>
+                                  <!-- /step -->
+                                </div>
+                              </div>
+                              <!-- /row -->
+                            </div>
                         </div>
                       </div>
                       <!-- /row -->
 
                       
                     </div>
+
+                    
                     @endforeach
                     
                 
+                   
                   
                     
     
@@ -421,106 +534,25 @@
     </div>
 </section>
 
-<div id="uploadModal" class="modal pt-5 mt-3">
-  <div class="modal-content">
-      <span class="close">X</span>
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-4 col-md-6">
-            <div class="step first">
-              <h3>1. User info and billing address</h3>
-            <ul class="nav nav-tabs" id="tab_checkout" role="tablist">
-              <li class="nav-item">
-              <a class="nav-link active" id="home-tab" data-toggle="tab" href="#tab_1" role="tab" aria-controls="tab_1" aria-selected="true">Uplod</a>
-              </li>
-             
-            </ul>
-            <div class="tab-content checkout">
-              <div class="tab-pane fade show active" id="tab_1" role="tabpanel" aria-labelledby="tab_1">
-                <form action="{{ route('bayar.update', ['id' => $item->id]) }}" method="POST" enctype="multipart/form-data">
-                  @csrf
-                  @method('PUT')
-                <div class="form-group">
-                  <input type="text" class="form-control" placeholder="name_transfer" name="name_transfer">
-                </div>
-                <div class="form-group">
-                  <input type="text" class="form-control" placeholder="nama_bank" name="nama_bank">
-                </div>
-                <hr>
-               
-                <!-- /row -->
-                <div class="form-group">
-                  <input type="file" class="form-control" placeholder="gambar" name="gambar">
-                </div>
-                <hr>
-                
-                <div id="other_addr_c" class="pt-2">
-                
-                <!-- /row -->
-               
-                
-                </div>
-                <!-- /other_addr_c -->
-                <hr>
-              </div>
-              <!-- /tab_1 -->
-       
-              <!-- /tab_2 -->
-            </div>
-            </div>
-            <!-- /step -->
-          </div>
-          <div class="col-lg-4 col-md-6">
-            <div class="step middle">
-              <h3>2. Pembayaran @if ($item->status == 0)
-                Belum Bayar
-            @elseif ($item->status == 1)
-                Sukses
-            @elseif ($item->status == 2)
-                Pending
-            @endif
-          </h3>
-              
-              
-              <div class="payment_info d-none d-sm-block">
-                <figure><img src="img/cards_all.svg" alt=""></figure>
-                <p>NO Rek : 12313123-1231</p>
-                <figure><img src="img/paypal.svg" alt=""></figure>
-                <p>No rek : 312839123123</p>
-              </div>
-            </div>
-            <!-- /step -->
-          </div>
-          <div class="col-lg-4 col-md-6">
-            <div class="step last">
-              <h3>3. Order Summary</h3>
-            <div class="box_general summary">
-              <ul>
-                <li>Where <span class="float-right">{{ $user->profile->name }}</span></li>
-                <li>Date <span class="float-right"> {{ $item->boking->tgl_boking }}</span></li>
-                <li>Harga <span class="float-right">{{ $item->boking->layanan->harga }}</span></li>
-                <li>Jumlah Tiket <span class="float-right">{{ $item->boking->jumlah }}</span></li>
-                <li>TOTAL COST <span class="float-right">Rp.{{ $item->jumlah }}</span></li>
-              </ul>
-              <textarea class="form-control add_bottom_15"  style="height: 100px;">{{ $item->boking->deskripsi }}</textarea>
- 
-              
-              <button type="submit" class="btn_1 full-width cart">CONFIRM AND PAY</button>
 
-            </form>
-            </div>
-            <!-- /box_general -->
-            </div>
-            <!-- /step -->
-          </div>
-        </div>
-        <!-- /row -->
-      </div>
-  </div>
-</div>
 @endsection
 
 @push('after-script')
+
+<script>
+  const uploadBtn_{{ $item->id }} = document.getElementById('uploadBtn_{{ $item->id }}');
+  const uploadModal_{{ $item->id }} = document.getElementById('uploadModal_{{ $item->id }}');
+  const closeBtn_{{ $item->id }} = uploadModal_{{ $item->id }}.querySelector('.close');
+
+  uploadBtn_{{ $item->id }}.addEventListener('click', function (e) {
+    e.preventDefault();
+    uploadModal_{{ $item->id }}.style.display = 'block';
+  });
+
+  closeBtn_{{ $item->id }}.addEventListener('click', function () {
+    uploadModal_{{ $item->id }}.style.display = 'none';
+  });
+</script>
 
 <script>
 
