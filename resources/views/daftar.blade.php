@@ -8,7 +8,7 @@ Daftar
 
 <div class="sub_header_in sticky_header">
     <div class="container">
-        <h1>Account</h1>
+        <h1>Akun Telaga Ngebel</h1>
     </div>
     <!-- /container -->
 </div>
@@ -22,8 +22,8 @@ Daftar
         <div class="row justify-content-center">
             <div class="col-xl-12 col-lg-12 col-md-12">
                 <div class="box_account">
-                    <h3 class="new_client">New Client</h3>
-                    <small class="float-right pt-2">* Required Fields</small>
+                    <h3 class="new_client">Wisatawan Baru</h3>
+                    
                     <div class="form_container">
                         <form method="POST" action="{{ route('daftar.store') }}">
                             @csrf

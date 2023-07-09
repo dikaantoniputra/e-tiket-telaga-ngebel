@@ -46,7 +46,7 @@
      
             <div class="text-center"><input type="submit" value="Log In" class="btn_1 full-width"></div>
             <div class="text-center">
-                Don’t have an account? <a href="{{ url('daftar') }}">Sign up</a>
+                Belum Punya Akun? <a href="{{ url('daftar') }}">Daftar</a>
             </div>
             <div id="forgot_pw">
                 <div class="form-group">

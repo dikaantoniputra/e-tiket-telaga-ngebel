@@ -4,7 +4,7 @@
 			<div class="col-lg-3 col-12">
 				<div id="logo">
 					<a href="index.html">
-						<img src="{{ asset('') }}img/logo_sticky.svg" width="165" height="35" alt="" class="logo_sticky">
+						<img src="{{ asset('assets/images/logo2.png') }}" width="50" height="50" alt="" class="logo_sticky"><span>Telaga Ngebel</span>
 					</a>
 				</div>
 			</div>
@@ -46,7 +46,7 @@
 						<li><span><a href="{{ url('about') }}">About</a></span>
 				
 						</li>
-						<li><span><a href="{{ url('help') }}">Help</a></span></li>
+						
 					</ul>
 				</nav>
 			</div>
