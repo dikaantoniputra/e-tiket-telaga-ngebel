@@ -1,6 +1,11 @@
 <?php
 
+use App\Models\User;
+use App\Models\Layanan;
+use App\Models\Orderan;
+use App\Models\Rekening;
 use App\Models\Informasi;
+use App\Http\Middleware\CheckRole;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserControler;
 use App\Http\Controllers\AuthController;
@@ -10,7 +15,6 @@ use App\Http\Controllers\LayananController;
 use App\Http\Controllers\OrderanController;
 use App\Http\Controllers\RekeningController;
 use App\Http\Controllers\InformasiController;
-use App\Http\Middleware\CheckRole;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,7 +35,12 @@ Route::post('/logout', [AuthController::class, 'logout']);
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], function () {
 
     Route::get('/', function () {
-        return view('admin.page.index');
+        $informasi = Informasi::count();
+        $rekeing = Rekening::count();
+        $user = User::count();
+        $orderan = Orderan::count();
+        $layanan = Layanan::count();
+        return view('admin.page.index', compact('informasi','user','orderan','layanan','rekeing'));
     })->name('admin');
 
     Route::resource('user', UserControler::class);
