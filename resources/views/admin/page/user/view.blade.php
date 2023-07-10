@@ -71,23 +71,22 @@
 
 <script 
 type="text/javascript">
- $(document).ready(function() {
+$(document).ready(function() {
     $('.table').DataTable({
-    processing: true,
-    serverSide: true,
-    serverSide: true,
-    ajax: {
-        url: '{{ route('user.index') }}',
-        
-    },
-    columns: [
-            {data: 'id', name: 'id'},      
-            {data: 'email', name: 'name'}, 
-            {data: 'profile.name', name: 'name'}, 
+        processing: true,
+        serverSide: true,
+        ajax: {
+            url: '{{ route('user.index') }}',
+        },
+        columns: [
+            {data: 'id', name: 'id', searchable: true, orderable: true},      
+            {data: 'email', name: 'email', searchable: true, orderable: true}, 
+            {data: 'profile.name', name: 'profile.name', defaultContent: 'name kosong', searchable: true, orderable: true}, 
             {data: 'action', name: 'action', orderable: false, searchable: false}
         ] 
     });
 });
+
 
 $(document).on('click', '.btn-delete', function(e) {
     e.preventDefault();

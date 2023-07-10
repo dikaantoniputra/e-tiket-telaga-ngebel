@@ -10,9 +10,7 @@ use App\Http\Controllers\LayananController;
 use App\Http\Controllers\OrderanController;
 use App\Http\Controllers\RekeningController;
 use App\Http\Controllers\InformasiController;
-
-
-
+use App\Http\Middleware\CheckRole;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,7 +28,7 @@ Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout']);
 
-Route::group(['prefix' => 'admin'], function () {
+Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], function () {
 
     Route::get('/', function () {
         return view('admin.page.index');
@@ -46,8 +44,9 @@ Route::group(['prefix' => 'admin'], function () {
 
     Route::resource('informasi', InformasiController::class);
 
-
 });
+
+
 
 Route::get('/', [EtiketController::class, 'index'])->name('index');
 

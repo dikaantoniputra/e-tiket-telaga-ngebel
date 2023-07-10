@@ -72,14 +72,11 @@ class BokingController extends Controller
                     
                 ]);
     
-                
-          
-            
-    
-            return redirect()->route('index')->with('success', 'Transaksi berhasil disimpan.');
+
+            return redirect()->route('riwayat')->with('success', 'Transaksi berhasil disimpan.');
         }
     
-        return redirect(route('index'));
+        return redirect(route('riwayat'));
     }
 
     /**

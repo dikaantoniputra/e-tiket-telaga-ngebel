@@ -82,9 +82,9 @@ type="text/javascript">
         
     },
     columns: [
-            {data: 'id', name: 'id'},      
-            {data: 'nama_layanan', name: 'name'}, 
-            {data: 'harga', name: 'name'}, 
+            {data: 'id', name: 'id', searchable: true, orderable: true},      
+            {data: 'nama_layanan', name: 'nama_layanan', searchable: true, orderable: true}, 
+            {data: 'harga', name: 'harga', searchable: true, orderable: true}, 
             {data: 'action', name: 'action', orderable: false, searchable: false}
         ] 
     });

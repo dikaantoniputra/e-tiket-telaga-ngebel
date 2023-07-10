@@ -81,9 +81,9 @@ type="text/javascript">
         
     },
     columns: [
-            {data: 'id', name: 'id'},      
-            {data: 'norek', name: 'name'}, 
-            {data: 'nama_bank', name: 'name'}, 
+            {data: 'id', name: 'id',searchable: true, orderable: true},      
+            {data: 'norek', name: 'norek', searchable: true, orderable: true}, 
+            {data: 'nama_bank', name: 'nama_bank', searchable: true, orderable: true}, 
             {data: 'action', name: 'action', orderable: false, searchable: false}
         ] 
     });

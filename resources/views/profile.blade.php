@@ -345,6 +345,11 @@
     </style>
 @endpush
 
+@section('title')
+Profile
+    
+@endsection
+
 @section('content')
 
 <section class="account-section">

@@ -21,7 +21,7 @@
                     <div class="col-md-8 col-lg-8 col-xl-8">                  
                         <div class="card my-5">
                             <div class="text-center p-2">   
-                                <img src="{{ asset('assets/images/logo.jpg') }}"  style="width: 200px; height:200px"/>
+                                <img src="{{ asset('assets/images/logo1.png') }}"  style="width: 200px; height:200px"/>
                             </div>
                             <div class="card-body p-2">
                                 
@@ -32,8 +32,8 @@
                                 <form method="POST" action="/login">
                                     @csrf
                                     <div class="mb-3">
-                                        <label for="emailaddress" class="form-label">UserName</label>
-                                        <input class="form-control" type="text"  name="username" id="username" required="" placeholder="Enter your UserName">
+                                        <label for="emailaddress" class="form-label">Email</label>
+                                        <input class="form-control" type="text"  name="email" id="username" required="" placeholder="Enter your UserName">
                                     </div>
 
                                     <div class="mb-3">

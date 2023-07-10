@@ -12,7 +12,7 @@
                 <div class="collapse show" id="collapse_ft_1">
                     <ul class="links">
                         <li><a href="{{ url('about') }}">About us</a></li>
-                        <li><a href="{{ url('login') }}">My account</a></li>
+                        <li><a href="{{ url('/profile') }}">My account</a></li>
                         <li><a href="{{ url('daftar') }}">Create account</a></li>
                     </ul>
                 </div>

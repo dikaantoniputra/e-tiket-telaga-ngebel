@@ -82,10 +82,10 @@ type="text/javascript">
         
     },
     columns: [
-            {data: 'id', name: 'id'},      
-            {data: 'judul', name: 'name'}, 
-            {data: 'jam_buka', name: 'name'}, 
-            {data: 'jam_tutup', name: 'name'}, 
+            {data: 'id', name: 'id', searchable: true, orderable: true},      
+            {data: 'judul', name: 'judul', searchable: true, orderable: true}, 
+            {data: 'jam_buka', name: 'jam_buka', searchable: true, orderable: true}, 
+            {data: 'jam_tutup', name: 'jam_tutup', searchable: true, orderable: true}, 
             {data: 'action', name: 'action', orderable: false, searchable: false}
         ] 
     });

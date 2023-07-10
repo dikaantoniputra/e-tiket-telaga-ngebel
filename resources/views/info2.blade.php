@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
- 
+{{ $informasi->judul }}
     
 @endsection
 
@@ -12,7 +12,7 @@
 		
 	<div class="sub_header_in sticky_header">
 		<div class="container">
-			<h1>TELAGA NGEBEL</h1>
+			<h1>{{ $informasi->judul }}</h1>
 		</div>
 		<!-- /container -->
 	</div>

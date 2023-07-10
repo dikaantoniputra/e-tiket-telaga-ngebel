@@ -361,6 +361,11 @@
     </style>
 @endpush
 
+@section('title')
+Tiket
+    
+@endsection
+
 @section('content')
 
 <section class="account-section">

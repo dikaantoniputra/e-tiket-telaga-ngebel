@@ -44,7 +44,7 @@
 
           <ul id="side-menu">
            
-                <li class="menu-title">Navigation</li>
+               
     
                 <li>
                     <a href="/admin">
@@ -98,12 +98,12 @@
                 </li>
 
                 
-                <li>
+                {{-- <li>
                     <a href="{{ url('/admin/susunan') }}">
                         <i class="mdi mdi-forum-outline"></i>
                         <span> Tiket </span>
                     </a>
-                </li>
+                </li> --}}
 
 
 

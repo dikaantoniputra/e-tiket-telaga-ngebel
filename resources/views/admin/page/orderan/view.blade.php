@@ -82,9 +82,9 @@ type="text/javascript">
         
     },
     columns: [
-            {data: 'id', name: 'id'},      
-            {data: 'user.email', name: 'name'}, 
-            {data: 'jumlah', name: 'name'}, 
+            {data: 'id', name: 'id', searchable: true, orderable: true},      
+            {data: 'user.email', name: 'user.email', searchable: true, orderable: true}, 
+            {data: 'jumlah', name: 'jumlah', searchable: true, orderable: true}, 
             {data: 'action', name: 'action', orderable: false, searchable: false}
         ] 
     });

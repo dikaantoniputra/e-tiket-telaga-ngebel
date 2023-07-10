@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    BUMDES | Home
+E-TICKETING TELAGA NGEBEL 
     
 @endsection
 
@@ -26,7 +26,7 @@
             <span></span>
             <h2>E-TICKETING</h2>
             <p>APLIKASI E-TICKETING TELAGA NGEBEL</p>
-            <a href="grid-listings-filterscol.html">See all</a>
+            
         </div>
        
    

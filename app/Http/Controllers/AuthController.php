@@ -26,17 +26,23 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
+        $request->validate([
+            'email' => 'required|string',
+            'password' => 'required|string',
+        ]);
+
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
-            // Jika autentikasi berhasil
-            return redirect()->intended('/profile');
+            if (Auth::user()->role === 'admin') {
+                return redirect()->route('admin');
+
+             } else {
+                return redirect()->intended('/');
+            }
         }
 
-        // Jika autentikasi gagal
-        return back()->withErrors([
-            'message' => 'Invalid credentials.',
-        ]);
+        return redirect()->back()->withInput()->withErrors(['email' => 'email or password is invalid']);
     }
 
     public function logout()
