@@ -68,7 +68,7 @@ Detail
                     </section>
                     <!-- /section -->
                 
-                    <section id="reviews">
+                    {{-- <section id="reviews">
                         <h2>Reviews</h2>
                         <div class="reviews-container add_bottom_30">
                             <div class="row">
@@ -230,7 +230,7 @@ Detail
                                     </div>
                                 </div>
                             </form>
-                        </div>
+                        </div> --}}
                 </div>
                 <!-- /col -->
                 
@@ -242,7 +242,9 @@ Detail
                         <input class="form-control" type="hidden" name="booking_id" value="{{ $detail->id }}">
                         <input class="form-control" type="hidden" name="harga" value="{{ $detail->harga }}">
                         <div class="price">
-                            <span>Rp.{{ $detail->harga }}<small>Harga</small></span>
+                           
+                            <span>RP{{ number_format($detail->harga, 0, ',', '.') }}<small>Harga</small></span>
+
                             <div class="score"><span><em>1 Tiket</em></span><strong>Masuk</strong></div>
                         </div>
 

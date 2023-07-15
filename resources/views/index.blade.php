@@ -40,7 +40,7 @@ E-TICKETING TELAGA NGEBEL
                         <div class="info">
                             <div class="cat_star"><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i></div>
                             <h3>{{ $item->nama_layanan }}</h3>
-                            <h3>{{ $item->harga }}</h3>
+                            <h3>{{ "Rp " . number_format($item->harga, 0, ',', '.') }}</h3>
                         </div>
                     </figure>
                 </a>

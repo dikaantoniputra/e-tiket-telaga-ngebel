@@ -26,7 +26,7 @@ class OrderanController extends Controller
         if ($request->ajax()) {
             $model = 'orderan';
             // return Datatables::of(User::select(['*']))
-            return Datatables::of(Orderan::with('user','profile'))
+            return Datatables::of(Orderan::with('user','profile','boking'))
             
         // ->addIndexColumn()
                      ->addColumn('action', function ($object) use ($model) {
@@ -39,12 +39,22 @@ class OrderanController extends Controller
                          </svg> Edit</a>';
                          $text.= ' <a href="'.route($model.'.destroy', [$model => $object]).'" class="btn btn-sm btn-danger btn-delete"><i class="fas fa-trash"></i> Hapus</a>';
                          return $text;
-                          })   
+                          })  
+
+                          
+                          ->editColumn('status', function ($object) {
+                            $text = "";
+                            if ($object->status == '0') $text = "Belum Bayar";
+                            if ($object->status == '1') $text = "Pending";
+                            if ($object->status == '2') $text = "Succes";
+                            return $text;
+                            })
+        
 
                         
 
                     ->addIndexColumn()
-                    ->rawColumns(['action'])
+                    ->rawColumns(['status','action'])
                     ->make(true);
 
         }

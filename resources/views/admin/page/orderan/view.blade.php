@@ -24,7 +24,9 @@
                         <th>No</th>
                         <th>Nama Wisatawan</th>
                         <th>Harga</th>
-        
+                        <th>Tanggal Pesan</th>
+                        <th>Tanggal Bayar</th>
+                        <th>Status</th>
                         <th>Action</th>
                     </tr>
                     </thead>
@@ -85,6 +87,9 @@ type="text/javascript">
             {data: 'id', name: 'id', searchable: true, orderable: true},      
             {data: 'user.email', name: 'user.email', searchable: true, orderable: true}, 
             {data: 'jumlah', name: 'jumlah', searchable: true, orderable: true}, 
+            {data: 'boking.tgl_boking', name: 'boking.tgl_boking', searchable: true, orderable: true},
+            {data: 'updated_at', name: 'updated_at', searchable: true, orderable: true},  
+            {data: 'status', name: 'status'},
             {data: 'action', name: 'action', orderable: false, searchable: false}
         ] 
     });
