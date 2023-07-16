@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 
+use Illuminate\Support\Facades\Mail;
 
 
 class EtiketController extends Controller
@@ -67,33 +68,44 @@ class EtiketController extends Controller
     }
 
     public function update(Request $request, $id)
-{
-    $validatedData = $request->validate([
-        'name_transfer' => 'required',
-        'nama_bank' => 'required',
-        'gambar' => 'image|mimes:jpeg,png,jpg,gif|max:2048', 
-    ]);
-    
-    $company = Orderan::find($id);
-    if (!$company) {
-        return redirect()->route('layanan.index')->with('error', 'Data perusahaan tidak ditemukan.');
+    {
+        $validatedData = $request->validate([
+            'name_transfer' => 'required',
+            'nama_bank' => 'required',
+            'gambar' => 'image|mimes:jpeg,png,jpg,gif|max:2048', 
+        ]);
+        
+        $company = Orderan::find($id);
+        if (!$company) {
+            return redirect()->route('layanan.index')->with('error', 'Data perusahaan tidak ditemukan.');
+        }
+
+        $company->name_transfer = $request->name_transfer;
+        $company->nama_bank = $request->nama_bank;
+        $company->status = 2; // Update status menjadi 2
+
+
+        if ($request->hasFile('gambar')) {
+            $file = $request->file('gambar');
+            $path = $request->file('gambar')->store('public/gambar');
+            $company->gambar = 'storage/' . substr($path, 7);
+        }
+
+        $company->save();
+
+              // Send email notification
+        $recipientEmail = $company->user->email;
+        $subject = 'Order Updated';
+        $messageText = 'Order berhasil Bayar.';
+
+        Mail::send([], [], function ($message) use ($recipientEmail, $subject, $messageText, $company) {
+            $message->to($recipientEmail)
+                     ->subject($subject)
+                    ->setBody(view('emails.updated', compact('company', 'messageText')), 'text/html');
+        });
+
+        return redirect()->route('riwayat')->with('success', 'Data perusahaan berhasil diperbarui.');
     }
-
-    $company->name_transfer = $request->name_transfer;
-    $company->nama_bank = $request->nama_bank;
-    $company->status = 2; // Update status menjadi 2
-
-
-    if ($request->hasFile('gambar')) {
-        $file = $request->file('gambar');
-        $path = $request->file('gambar')->store('public/gambar');
-        $company->gambar = 'storage/' . substr($path, 7);
-    }
-
-    $company->save();
-
-    return redirect()->route('riwayat')->with('success', 'Data perusahaan berhasil diperbarui.');
-}
 
 
 public function tiket()

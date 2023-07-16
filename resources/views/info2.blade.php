@@ -63,7 +63,7 @@
 					<a class="box_feat" href="#0">
 						<i class="pe-7s-credit"></i>
 						<h3>Tarif</h3>
-						<p>RP.{{ number_format($informasi->harga, 0, ',', '.') }}</p>
+						<p>RP{{ number_format($informasi->harga, 0, ',', '.') }}</p>
 					</a>
 				</div>
 				<div class="col-lg-4 col-md-6">
