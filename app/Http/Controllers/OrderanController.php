@@ -49,6 +49,11 @@ class OrderanController extends Controller
                             if ($object->status == '2') $text = "Succes";
                             return $text;
                             })
+
+                            ->editColumn('user.profile', function ($object) {
+                                $profile = $object->user->profile;
+                                return $profile ? $profile->name : '';
+                            })
         
 
                         

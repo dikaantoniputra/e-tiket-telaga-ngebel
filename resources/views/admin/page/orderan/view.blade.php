@@ -85,7 +85,7 @@ type="text/javascript">
     },
     columns: [
             {data: 'id', name: 'id', searchable: true, orderable: true},      
-            {data: 'user.email', name: 'user.email', searchable: true, orderable: true}, 
+            { data: 'user.profile', name: 'user.profile' },
             {data: 'jumlah', name: 'jumlah', searchable: true, orderable: true}, 
             {data: 'boking.tgl_boking', name: 'boking.tgl_boking', searchable: true, orderable: true},
             {data: 'updated_at', name: 'updated_at', searchable: true, orderable: true},  
