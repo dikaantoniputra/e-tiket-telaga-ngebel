@@ -2,9 +2,9 @@
     <div class="account-information">
         
 
-        <ul>
+        <ul id="menu">
             <li>
-                <a href="#" class="active">
+                <a href="{{ url('profile') }}" class="active">
                     <i class='bx bx-user'></i>
                     My Profile
                 </a>
@@ -22,9 +22,9 @@
                 </a>
             </li>
             <li>
-                <a href="#">
-                    <i class='bx bx-lock-alt' ></i>
-                    Change Password
+                <a href="{{ url('profile/password') }}">
+                    <i class='bx bx-lock-alt'></i>
+                    Ganti Password
                 </a>
             </li>
           

@@ -79,6 +79,10 @@ Route::post('/booking', [BokingController::class, 'store'])->name('booking.store
 Route::put('/bayar/{id}', [EtiketController::class, 'update'])->name('bayar.update');
 
 
+Route::get('/profile/password', [EtiketController::class, 'showPasswordForm'])->name('profile.password');
+Route::put('/profile/password', [EtiketController::class, 'updatePassword'])->name('profile.updatePassword');
+
+
 Route::get('/telaga-ngebel', function () {
     $informasi = Informasi::orderBy('created_at', 'asc')->first();
     return view('info', compact('informasi'));

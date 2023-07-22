@@ -45,8 +45,8 @@ class OrderanController extends Controller
                           ->editColumn('status', function ($object) {
                             $text = "";
                             if ($object->status == '0') $text = "Belum Bayar";
-                            if ($object->status == '1') $text = "Pending";
-                            if ($object->status == '2') $text = "Succes";
+                            if ($object->status == '1') $text = "Succes";
+                            if ($object->status == '2') $text = "Pending";
                             return $text;
                             })
 
