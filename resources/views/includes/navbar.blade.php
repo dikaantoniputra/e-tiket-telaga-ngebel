@@ -4,7 +4,7 @@
 			<div class="col-lg-3 col-12">
 				<div id="logo">
 					<a href="{{ url('/') }}">
-						<img src="{{ asset('assets/images/logo1.png') }}" width="50" height="50" alt="" class="logo_sticky">
+						<img src="{{ asset('assets/images/logo.jpeg') }}" width="50" height="50" alt="" class="logo_sticky">
 					</a>
 				</div>
 			</div>
