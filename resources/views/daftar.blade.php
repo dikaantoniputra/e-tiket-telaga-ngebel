@@ -8,7 +8,7 @@ Daftar
 
 <div class="sub_header_in sticky_header">
     <div class="container">
-        <h1>Akun Telaga Ngebel</h1>
+        <h1>E-Tiket Wisata Atlantis</h1>
     </div>
     <!-- /container -->
 </div>

@@ -17,7 +17,7 @@
 				</ul>
 				@else
 				<ul id="top_menu">
-					<li><a href="{{ url('profile') }}" class="btn_add">Akun Saya</a></li>
+					<li><a href="{{ url('profile') }}" class="btn_add">Pendaftaran Tiket</a></li>
 				</ul>
 				@endguest
 				<!-- /top_menu -->
@@ -30,23 +30,14 @@
 				</a>
 				<nav id="menu" class="main-menu">
 					<ul>
-						<li><span><a href="{{ url('/') }}">Home</a></span>
-							
-						</li>
-						
-						
-						</li>
+						<li><span><a href="{{ url('/') }}">Home</a></span></li>
 						<li><span><a href="#0">Info Wisata</a></span>
 							<ul>
 								<li><a href="{{ url('telaga-ngebel') }}">TELAGA NGEBEL</a></li>
 								<li><a href="{{ url('mloko-sewu') }}">MLOKO SEWU</a></li>
-								
 							</ul>
 						</li>
-						<li><span><a href="{{ url('about') }}">About</a></span>
-				
-						</li>
-						
+						<li><span><a href="{{ url('about') }}">Tentang Kami</a></span></li>
 					</ul>
 				</nav>
 			</div>

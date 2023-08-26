@@ -19,7 +19,7 @@
             </div>
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <a data-toggle="collapse" data-target="#collapse_ft_2" aria-expanded="false" aria-controls="collapse_ft_2" class="collapse_bt_mobile">
-                    <h3>Categories</h3>
+                    <h3>Informasi Wisata</h3>
                     <div class="circle-plus closed">
                         <div class="horizontal"></div>
                         <div class="vertical"></div>
@@ -42,8 +42,7 @@
                 </a>
                 <div class="collapse show" id="collapse_ft_3">
                     <ul class="contacts">
-                        <li><i class="ti-headphone-alt"></i>08135800131</li>
-                        <li><i class="ti-email"></i><a href="#0">wisatangebel@gmail.com</a></li>
+                        <li><i class="ti-headphone-alt"></i>+62 812-3456-5026</li>
                     </ul>
                 </div>
             </div>
@@ -54,11 +53,8 @@
                     <div class="follow_us">
                         <h5>Follow Us</h5>
                         <ul>
-                            <li><a href="#0"><i class="ti-facebook"></i></a></li>
-                            <li><a href="#0"><i class="ti-twitter-alt"></i></a></li>
-                            <li><a href="#0"><i class="ti-google"></i></a></li>
-                            <li><a href="#0"><i class="ti-pinterest"></i></a></li>
-                            <li><a href="#0"><i class="ti-instagram"></i></a></li>
+                            <li><a href="https://www.facebook.com/search/top?q=atlantis%20land"><i class="ti-facebook"></i></a></li>
+                            <li><a href="https://www.instagram.com/atlantislandofficial/"><i class="ti-instagram"></i></a></li>
                         </ul>
                     </div>
                 </div>
@@ -72,7 +68,7 @@
                 <ul id="additional_links">
                     <li><a href="#0">Terms and conditions</a></li>
                     <li><a href="#0">Privacy</a></li>
-                    <li><span>© 2023 kirana dewi</span></li>
+                    <li><span>©Bankotak</span></li>
                 </ul>
             </div>
         </div>
