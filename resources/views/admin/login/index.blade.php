@@ -21,7 +21,7 @@
                     <div class="col-md-8 col-lg-8 col-xl-8">                  
                         <div class="card my-5">
                             <div class="text-center p-2">   
-                                <img src="{{ asset('assets/images/logo1.png') }}"  style="width: 200px; height:200px"/>
+                                <img src="{{ asset('assets/images/logo.jpeg') }}"  style="width: 200px; height:200px"/>
                             </div>
                             <div class="card-body p-2">
                                 
