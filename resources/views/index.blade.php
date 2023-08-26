@@ -20,7 +20,36 @@ E-TICKET Atlantis Land
         </div>
     </section>
     <!-- /hero_single -->	
+    <div class="container margin_60_35">
+        <div class="main_title_3">
+            <span></span>
+            <h2>E-TICKETING</h2>
+            <p>APLIKASI E-TICKETING TELAGA NGEBEL</p>
 
+        </div>
+
+
+        <div class="row add_bottom_30">
+            @foreach ($layanan as $item)
+            <div class="col-lg-3 col-sm-6">
+
+                    <a href="{{ route('detaillayanan', ['slug' => $item->slug]) }}" class="grid_item small">
+                    <figure>
+                        <img src="{{ asset($item->gambar) }}" alt="">
+                        <div class="info">
+                            <div class="cat_star"><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i></div>
+                            <h3>{{ $item->nama_layanan }}</h3>
+                            <h3>{{ "Rp " . number_format($item->harga, 0, ',', '.') }}</h3>
+                        </div>
+                    </figure>
+                </a>
+            </div>
+            @endforeach
+
+        </div>
+        <!-- /row -->
+
+    </div>
     
  
     
