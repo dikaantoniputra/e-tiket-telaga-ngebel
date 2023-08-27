@@ -2,8 +2,8 @@
     <div class="card">
         <div class="card-body">
 
-            <h4 class="header-title">Wisata Form Penginputan Pengumuman</h4>
-            <p class="sub-header">Masukan Data Tiket Secara Benar</p>
+            <h4 class="header-title">Informasi Jam Operasional Atlantis Land</h4>
+            <p class="sub-header">Masukan Data informasi dengan benar</p>
 
             <form class="needs-validation" novalidate>
                 <div class="mb-3">
@@ -22,7 +22,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="validationCustom01" class="form-label">jam_buka</label>
+                    <label for="validationCustom01" class="form-label">Jam Buka</label>
                     <input type="time" class="form-control" id="validationCustom01" placeholder="First name" name="jam_buka" value="{{ $informasi->jam_buka ?? '' }}" required />
                     <div class="valid-feedback">
                         Looks good!
@@ -30,7 +30,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="validationCustom01" class="form-label">jam_tutup</label>
+                    <label for="validationCustom01" class="form-label">Jam Tutup</label>
                     <input type="time" class="form-control" id="validationCustom01" placeholder="First name" name="jam_tutup" value="{{ $informasi->jam_tutup ?? '' }}" required />
                     <div class="valid-feedback">
                         Looks good!
@@ -38,7 +38,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="validationCustom01" class="form-label">hari_buka</label>
+                    <label for="validationCustom01" class="form-label">Hari Buka</label>
                     <input type="text" class="form-control" id="validationCustom01" placeholder="First name" name="hari_buka" value="{{ $informasi->hari_buka ?? '' }}" required />
                     <div class="valid-feedback">
                         Looks good!
@@ -46,7 +46,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="validationCustom01" class="form-label">hari_tutup</label>
+                    <label for="validationCustom01" class="form-label">Hari Tutup</label>
                     <input type="text" class="form-control" id="validationCustom01" placeholder="First name" name="hari_tutup" value="{{ $informasi->hari_tutup ?? '' }}" required />
                     <div class="valid-feedback">
                         Looks good!

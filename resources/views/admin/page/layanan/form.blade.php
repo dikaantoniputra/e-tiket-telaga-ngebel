@@ -2,20 +2,20 @@
     <div class="card">
         <div class="card-body">
 
-            <h4 class="header-title">Wisata Form Penginputan Pengumuman</h4>
-            <p class="sub-header">Masukan Data Tiket Secara Benar</p>
+            <h4 class="header-title">Formulir nama layanan Atlantis Land</h4>
+            <p class="sub-header">Mohon masukan data dengan benar</p>
 
             <form class="needs-validation" novalidate>
                 <div class="mb-3">
-                    <label for="validationCustom01" class="form-label">Judul Pengumuman</label>
-                    <input type="text" class="form-control" id="validationCustom01" placeholder="First name" name="nama_layanan" value="{{ $layanan->nama_layanan ?? '' }}" required />
+                    <label for="validationCustom01" class="form-label">Nama Layanan</label>
+                    <input type="text" class="form-control" id="validationCustom01" placeholder="Silahkan masukan nama layanan" name="nama_layanan" value="{{ $layanan->nama_layanan ?? '' }}" required />
                     <div class="valid-feedback">
                         Looks good!
                     </div>
                 </div>
 
                 <div class="mb-3">
-                <h4 class="header-title">deskripsi</h4>
+                <h4 class="header-title">Deskripsi Layanan</h4>
                 <textarea class="form-control" id="editor" name="deskrispi"
                 rows="5">{{ $layanan->deskrispi ?? '' }}</textarea>
                
@@ -50,7 +50,7 @@
                     
                       <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" name="status" id="status2" value="active" @if ($layanan->status == 'active') checked @endif>
-                        <label class="form-check-label" for="inlineRadio2">Aktive</label>
+                        <label class="form-check-label" for="inlineRadio2">Aktif</label>
                       </div>
                       <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" name="status" id="status1" value="tutup" @if ($layanan->status == 'tutup') checked @endif>
