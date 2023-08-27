@@ -2,7 +2,7 @@
     <div class="card">
         <div class="card-body">
 
-            <h4 class="header-title">Informasi Jam Operasional Atlantis Land</h4>
+            <h4 class="header-title">Informasi Promo atau Jam Operasional Atlantis Land</h4>
             <p class="sub-header">Masukan Data informasi dengan benar</p>
 
             <form class="needs-validation" novalidate>

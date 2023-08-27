@@ -7,8 +7,8 @@
             <form class="needs-validation" novalidate>
 
                 <div class="mb-3">
-                    <label for="validationCustom01" class="form-label">NO Rek</label>
-                    <input type="text" class="form-control" id="validationCustom01" placeholder="First name" name="norek" value="{{ $rekening->norek ?? '' }}"  />
+                    <label for="validationCustom01" class="form-label">No. Rekening</label>
+                    <input type="text" class="form-control" id="validationCustom01" placeholder="First name" name="Masukan Nomor Rekening Dengan Benar" value="{{ $rekening->norek ?? '' }}"  />
                     <div class="valid-feedback">
                         Looks good!
                     </div>                    
@@ -16,7 +16,7 @@
 
                 <div class="mb-3">
                     <label for="validationCustom01" class="form-label">Nama bank</label>
-                    <input type="text" class="form-control" id="validationCustom01" placeholder="First name" name="nama_bank" value="{{ $rekening->nama_bank ?? '' }}"  />
+                    <input type="text" class="form-control" id="validationCustom01" placeholder="Masukan Nama Bank Dengan Benar" name="nama_bank" value="{{ $rekening->nama_bank ?? '' }}"  />
                     <div class="valid-feedback">
                         Looks good!
                     </div>                    

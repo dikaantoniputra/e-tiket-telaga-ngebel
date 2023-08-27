@@ -2,7 +2,7 @@
     <div class="card">
         <div class="card-body">
 
-            <h4 class="header-title">Formulir nama layanan Atlantis Land</h4>
+            <h4 class="header-title">Nama layanan Atlantis Land</h4>
             <p class="sub-header">Mohon masukan data dengan benar</p>
 
             <form class="needs-validation" novalidate>
@@ -23,7 +23,7 @@
 
                 <div class="mb-3">
                     <label for="validationCustom01" class="form-label">Harga</label>
-                    <input type="number" class="form-control" id="validationCustom01" placeholder="First name" name="harga" value="{{ $layanan->harga ?? '' }}" required />
+                    <input type="number" class="form-control" id="validationCustom01" placeholder="Masukan Harga Layanan" name="harga" value="{{ $layanan->harga ?? '' }}" required />
                     <div class="valid-feedback">
                         Looks good!
                     </div>
