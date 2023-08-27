@@ -493,16 +493,16 @@ Riwayat
                                     <h3>3. Order Summary</h3>
                                   <div class="box_general summary">
                                     <ul>
-                                      <li>Where <span class="float-right">{{ $user->profile->name ?? ''}}</span></li>
-                                      <li>Date <span class="float-right"> {{ $item->boking->tgl_boking ?? '' }}</span></li>
+                                      <li>Nama <span class="float-right">{{ $user->profile->name ?? ''}}</span></li>
+                                      <li>Tanggal Booking <span class="float-right"> {{ $item->boking->tgl_boking ?? '' }}</span></li>
                                       <li>Harga <span class="float-right">{{ $item->boking->layanan->harga ?? '' }}</span></li>
                                       <li>Jumlah Tiket <span class="float-right">{{ $item->boking->jumlah ?? '' }}</span></li>
-                                      <li>TOTAL COST <span class="float-right">Rp.{{ $item->jumlah ?? '' }}</span></li>
+                                      <li>Total Pembayaran <span class="float-right">Rp.{{ $item->jumlah ?? '' }}</span></li>
                                     </ul>
                                     <textarea class="form-control add_bottom_15"  style="height: 100px;">{{ $item->boking->deskripsi }}</textarea>
                        
                                     
-                                    <button type="submit" class="btn_1 full-width cart">CONFIRM AND PAY</button>
+                                    <button type="submit" class="btn_1 full-width cart">Konfirmasi</button>
                       
                                   </form>
                                   </div>
