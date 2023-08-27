@@ -21,12 +21,12 @@
                     My Riwayat Pemesanan
                 </a>
             </li>
-            <li>
+            {{-- <li>
                 <a href="{{ url('profile/password') }}">
                     <i class='bx bx-lock-alt'></i>
                     Ganti Password
                 </a>
-            </li>
+            </li> --}}
           
             <li>
                 <form action="/logout" method="POST">

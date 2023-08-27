@@ -14,7 +14,8 @@
         <div class="card">
             <div class="card-body table-responsive">
                
-               
+                <a href="{{ route('export.pdf') }}" class="btn btn-primary">Export as PDF</a>
+
                 <br>
                 <br>
                 <table id="responsive-datatable" class="table table-bordered table-bordered dt-responsive nowrap">

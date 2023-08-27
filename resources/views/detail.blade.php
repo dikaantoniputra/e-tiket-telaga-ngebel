@@ -264,7 +264,7 @@ Detail
 
                         <button type="submit"  class=" add_top_30 btn_1 full-width purchase">Purchase</button>
                     </form>
-                        <a href="wishlist.html" class="btn_1 full-width outline wishlist"><i class="icon_heart"></i> Add to wishlist</a>
+                        {{-- <a href="wishlist.html" class="btn_1 full-width outline wishlist"><i class="icon_heart"></i> Add to wishlist</a> --}}
                        
                     </div>
                     {{-- <ul class="share-buttons">

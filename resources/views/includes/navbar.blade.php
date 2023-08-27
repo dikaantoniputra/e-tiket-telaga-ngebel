@@ -33,8 +33,8 @@
 						<li><span><a href="{{ url('/') }}">Home</a></span></li>
 						<li><span><a href="#0">Info Wisata</a></span>
 							<ul>
-								<li><a href="{{ url('telaga-ngebel') }}">TELAGA NGEBEL</a></li>
-								<li><a href="{{ url('mloko-sewu') }}">MLOKO SEWU</a></li>
+								<li><a href="{{ url('telaga-ngebel') }}">ATLANTIS</a></li>
+								
 							</ul>
 						</li>
 						<li><span><a href="{{ url('about') }}">Tentang Kami</a></span></li>

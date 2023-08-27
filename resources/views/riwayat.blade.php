@@ -532,7 +532,7 @@ Riwayat
 
                   
                   <!-- /box_booking -->
-                  <p class="text-right"><a href="checkout.html" class="btn_1">Checkout</a></p>
+                 
                 </div>
                 <!-- /container -->
               </main>

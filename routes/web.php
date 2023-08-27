@@ -53,6 +53,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], func
 
     Route::resource('informasi', InformasiController::class);
 
+    Route::get('export-pdf', [EtiketController::class, 'exportPDF'])->name('export.pdf');
+
+
 });
 
 

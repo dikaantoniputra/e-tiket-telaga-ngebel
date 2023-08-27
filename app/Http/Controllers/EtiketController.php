@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
-
+use PDF;
 
 class EtiketController extends Controller
 {
@@ -153,6 +153,19 @@ public function showPasswordForm()
     
         return redirect()->route('profile.password');
     }
+
+
+
+
+    public function exportPDF()
+{
+    $data = Orderan::all(); // Fetch data from the Orderan model
+
+    $pdf = PDF::loadView('admin.pdf.template', compact('data')); // Create a PDF instance
+
+    return $pdf->download('table_data.pdf'); // Download the PDF file
+}
+
     
 
 
